@@ -3,7 +3,6 @@
 ## Overview
 A professional and user-friendly web application designed to generate secure passwords effortlessly.
 
-[![CI Pipeline](https://github.com/0Mr-Panda0/Password-Generator/actions/workflows/main.yml/badge.svg)](https://github.com/0Mr-Panda0/Password-Generator/actions/workflows/main.yml) Password Generator Web App
 ## Features
 - Generate secure passwords with a single click
 - Customize password length and complexity
@@ -34,8 +33,5 @@ A professional and user-friendly web application designed to generate secure pas
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request.
 
-## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Contact
-For any inquiries, please contact [your-email@example.com](mailto:your-email@example.com).
+[![CI Pipeline](https://github.com/0Mr-Panda0/Password-Generator/actions/workflows/main.yml/badge.svg)](https://github.com/0Mr-Panda0/Password-Generator/actions/workflows/main.yml)
