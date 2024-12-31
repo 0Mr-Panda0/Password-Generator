@@ -1,6 +1,5 @@
 from mylib.password_generator import creating_password
 from string import punctuation
-import os
 
 
 def test_password_generator():
