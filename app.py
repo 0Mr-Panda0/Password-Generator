@@ -1,19 +1,14 @@
 from flask import Flask, request, render_template
 from mylib.password_generator import creating_password
-import mysql.connector
 import os
 from dotenv import load_dotenv
+import sqlite3
 
 app = Flask(__name__)
 load_dotenv()
 
-db = mysql.connector.connect(
-    host=os.getenv("HOST_NAME"),
-    user=os.getenv("USER_NAME"),
-    port=os.getenv("PORT"),
-    password=os.getenv("PASSWORD"),
-    database=os.getenv("DATABASE_NAME"),
-)
+db_path = os.getenv("DB_PATH", "database.db")
+db = sqlite3.connect(db_path, check_same_thread=False)
 
 
 @app.route("/")
