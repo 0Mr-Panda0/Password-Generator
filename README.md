@@ -9,7 +9,7 @@ A professional and user-friendly web application designed to generate secure pas
 - User-friendly interface
 - Responsive design for mobile and desktop
 
-## Installation
+## Installation and Usage
 1. Clone the repository:
     ```bash
     git clone https://github.com/0Mr-Panda0/Password-Generator.git
@@ -18,17 +18,31 @@ A professional and user-friendly web application designed to generate secure pas
     ```bash
     cd Password-Generator
     ```
-3. Install the required dependencies:
+3. Create a virtual environment:
     ```bash
-    pip install -r requirements.txt
+    python -m venv <virtual_env_name>
     ```
+4. Activating virtual environment:(Windows specific)
+    ```bash
+    .\.<virtual_env_name>\Scripts\Activate.ps1
+    ```
+5. Install required modules:
+    ```bash
+    pip install -r requirements.txt 
 
-## Usage
-1. Run the application:
+6. create `.env` file:
+    ```bash
+    DB_PATH="<database_path>"
+    ```
+7. Run code:
+    ```bash
+    invoke build
+    ```
+8. Run the application:
     ```bash
     python app.py
     ```
-2. Open your web browser and go to `http://localhost:5000`
+9. Open your web browser and go to `http://localhost:5000`
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request.
