@@ -1,13 +1,16 @@
 from flask import Flask, request, render_template
 from mylib.password_generator import creating_password
 import os
-from dotenv import load_dotenv
 import sqlite3
 
 app = Flask(__name__)
-load_dotenv()
 
-db_path = os.getenv("DB_PATH", "database.db")
+
+# Create directory if it doesn't exist
+if not os.path.exists("data"):
+    os.makedirs("data")
+# Configure SQLite connection
+db_path = "data/database.db"
 db = sqlite3.connect(db_path, check_same_thread=False)
 
 
