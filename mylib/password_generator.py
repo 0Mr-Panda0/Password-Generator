@@ -1,10 +1,8 @@
-from random import choice, randint
+from random import choice
 from string import ascii_letters, digits, punctuation
 
 def creating_password(length_of_password=11, if_special_character_allowed="Yes"):
-    length_of_password = int(length_of_password)
+    character = digits + ascii_letters 
     if if_special_character_allowed == "Yes":
-        character = digits + ascii_letters + punctuation
-    else:
-        character = digits + ascii_letters
-    return "".join(choice(character) for every_character in range(length_of_password))
+        character = character + punctuation
+    return "".join(choice(character) for every_character in range(int(length_of_password)))

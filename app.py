@@ -1,17 +1,8 @@
 from flask import Flask, request, render_template
 from mylib.password_generator import creating_password
-import os
-import sqlite3
+from mylib.database_conn import create_table, insert_password, get_last_password
 
 app = Flask(__name__)
-
-
-# Create directory if it doesn't exist
-if not os.path.exists("data"):
-    os.makedirs("data")
-# Configure SQLite connection
-db_path = "data/database.db"
-db = sqlite3.connect(db_path, check_same_thread=False)
 
 
 @app.route("/")
@@ -26,15 +17,15 @@ def generate_password():
     password = creating_password(length, special_character)
 
     # creating table if not exists
-    cursor = db.cursor()
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS password (id INT AUTO_INCREMENT PRIMARY KEY, password VARCHAR(255))"
-    )
-    cursor.execute("INSERT INTO password (password) VALUES ('{}')".format(password))
-    db.commit()
-    # return password
-    cursor.execute("SELECT * FROM password ORDER BY id DESC LIMIT 1")
-    password = cursor.fetchone()[1]
+    create_table()
+
+    # insert password into database
+    insert_password(password)
+
+    # get last password from database
+    password = get_last_password()
+
+    # return the password to the template
     return render_template("index.html", password=password)
 
 

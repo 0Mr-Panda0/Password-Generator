@@ -22,5 +22,10 @@ def lint(c):
 
 
 @task(pre=[install, lint, design, test])
+def build(c):
+    c.run("echo 'Build complete!'")
+
+
+@task(pre=[build])
 def run(c):
     c.run("python app.py")
