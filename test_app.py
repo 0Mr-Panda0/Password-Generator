@@ -1,5 +1,5 @@
 from mylib.password_generator import creating_password
-from mylib.database_conn import insert_password, get_last_password, delete_last_password
+from mylib.database_conn import insert_password, get_last_password, delete_last_password,create_table
 from string import digits, ascii_letters, punctuation
 
 
@@ -43,10 +43,14 @@ def test_creating_password_with_edge_cases():
     # Test with empty length
     password = creating_password(0, "Yes")
     assert len(password) == 0, "Password should be empty for length 0"
-
+   
 
 def test_insert_password():
     # Test inserting password into the database
+    # Ensure the table is created
+    create_table()
+    # Insert a test password
+    # Note: This is a simple test and should be isolated from other tests
     test_password = "TestPassword123!"
     insert_password(test_password)
 
