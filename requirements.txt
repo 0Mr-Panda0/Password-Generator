@@ -1,8 +1,6 @@
-black
-coverage
-Flask
-pylint
+flask
 pytest
 pytest-cov
-python-dotenv
 invoke
+mypy
+ruff

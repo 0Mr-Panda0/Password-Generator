@@ -8,6 +8,7 @@ if not os.path.exists("data"):
 db_path = "data/database.db"
 db = sqlite3.connect(db_path, check_same_thread=False)
 
+
 def create_table():
     cursor = db.cursor()
     # Creating table if not exists
@@ -17,11 +18,13 @@ def create_table():
     db.commit()
     cursor.close()
 
+
 def insert_password(password):
     cursor = db.cursor()
     cursor.execute("INSERT INTO password (password) VALUES (?)", (password,))
     db.commit()
     cursor.close()
+
 
 def get_last_password():
     cursor = db.cursor()
@@ -30,9 +33,10 @@ def get_last_password():
     cursor.close()
     return password[1] if password else None
 
+
 def delete_last_password():
     cursor = db.cursor()
-    cursor.execute("DELETE FROM password ORDER BY id DESC LIMIT 1")
+    query = "DELETE FROM password WHERE id = (SELECT MAX(id) FROM password)"
+    cursor.execute(query)
     db.commit()
     cursor.close()
-

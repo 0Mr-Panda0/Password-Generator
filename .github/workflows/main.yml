@@ -11,18 +11,22 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: install invoke
-        run: pip install invoke
-      - name: install packages
-        run: invoke install
-      - name: lint
-        run: invoke lint
-      - name: test
-        run: invoke test
-      - name: format
-        run: invoke design
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+
+    - name: Install dependencies
+      run: uv run invoke manage-dependency
+
+    - name: Lint and format with ruff
+      run: uv run invoke lint-and-format-code
+
+    - name: Run type checks with mypy
+      run: uv run invoke type-hints-check
+
+    - name: Run tests
+      run: uv run invoke test-code

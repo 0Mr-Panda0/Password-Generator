@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
-from mylib.password_generator import creating_password
-from mylib.database_conn import create_table, insert_password, get_last_password
+from pass_gen.password_generator import creating_password
+from pass_gen.database_conn import create_table, insert_password, get_last_password
 
 app = Flask(__name__)
 
