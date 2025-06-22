@@ -20,29 +20,17 @@ A professional and user-friendly web application designed to generate secure pas
     ```
 3. Create a virtual environment:
     ```bash
-    python -m venv <virtual_env_name>
+    winget install --id=astral-sh.uv  -e
     ```
-4. Activating virtual environment:(Windows specific)
+4. Install required modules:
     ```bash
-    .\<virtual_env_name>\Scripts\Activate.ps1
+    uv run -r requirements.txt 
     ```
-    Activating virtual environment:(Linux specific)
+5. Run code:
     ```bash
-    source <virtual_env_name>/bin/activate
+    uv run invoke build
     ```
-5. Install required modules:
-    ```bash
-    pip install -r requirements.txt 
-
-6. Run code:
-    ```bash
-    invoke build
-    ```
-7. Run the application:
-    ```bash
-    python app.py
-    ```
-8. Open your web browser and go to `http://localhost:5000`
+6. Open your web browser and go to `http://localhost:5000`
 
 ## Contributing
 Contributions are welcome! Please fork the repository and create a pull request.
